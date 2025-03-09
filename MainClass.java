@@ -34,7 +34,32 @@ public class MainClass {
         return result;
     }
 
+    public static int maxProfit(int[] prices) {
+        if (prices == null || prices.length == 0) return 0;
+        
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price; // อัพเดตราคาซื้อที่ต่ำที่สุด
+            } else {
+                maxProfit = Math.max(maxProfit, price - minPrice); // คำนวณกำไรสูงสุด
+            }
+        }
+        
+        return maxProfit;
+    }
+
     public static void main(String[] args) {
+
+        System.out.println("## Q1 ##################");
+        int[] prices1 = {7, 1, 5, 3, 6, 4};
+        System.out.println(maxProfit(prices1)); // Output: 5
+
+        int[] prices2 = {7, 6, 4, 3, 1};
+        System.out.println(maxProfit(prices2)); // Output: 0
+        System.out.println("----------------------------------------------------");
 
         System.out.println("## Q2 ##################");
         System.out.println(compareVersion("1.01", "1.001")); // Output: 0
